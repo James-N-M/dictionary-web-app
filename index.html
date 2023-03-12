@@ -1,56 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Dictionary Web App</title>
-</head>
-<body>
-    <div>This is the top bar</div>
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            http-equiv="X-UA-Compatible"
+            content="IE=edge"
+        >
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <link rel="stylesheet" href="styles.css">
+        <title>Dictionary Web App</title>
+    </head>
+    <body>
+        <div>This is the top bar</div>
 
-    <input type="text" placeholder="keyboard">
 
-    <div>
+        <input
+            type="text"
+            placeholder="keyboard"
+        >
+
+
         <div>
-            <h1>Keyboard</h1>
-            <h2>/kc:/bc</h2>
+            <div>
+                <h1 id="word-title">keyboard</h1>
+                <h2 id="word-subtitle">/kc:/bc</h2>
+            </div>
+            <button id="play-btn">Play</button>
         </div>
-        <button>Play</button>
-    </div>
-
-    <div>
-        <h3>noun</h3>
-        <hr />
-    </div>
-
-    <h4>Meaning</h4>
-    <ul>
-        <li>123</li>
-        <li>123</li>
-        <li>123</li>
-    </ul>
-
-    <h4>Synonoumns</h4>
-    <span>electronic keyboard</span>
-
-    <div>
-        <h3>verb</h3>
-        <hr />
-    </div>
-
-    <h4>Meaning</h4>
-    <ul>
-        <li>123</li>
-    </ul>
-
-    <hr>
-
-    <h5>Source</h5>
-    <a href="#">this is link thing</a>
 
 
-    <script src="scripts.js"></script>
-</body>
+        <div class="section-divider" style="align-items: center;">
+            <h3 style="margin-right: 20px;">noun</h3>
+            <div style="flex: 1"><hr style="border-bottom: thin black 1px;"></div>
+        </div>
+
+
+        <h4>Meaning</h4>
+        <ul id="noun-meaning">
+            <li>123</li>
+            <li>123</li>
+            <li>123</li>
+        </ul>
+
+
+        <h4>Synonoumns</h4>
+        <span id="synonymns">electronic keyboard</span>
+
+
+        <div>
+            <h3>verb</h3>
+            <hr>
+        </div>
+
+
+        <h4>Meaning</h4>
+        <ul id="verb-meaning">
+            <li>123</li>
+        </ul>
+
+
+        <hr>
+
+
+        <h5>Source</h5>
+        <a 
+        href="#"
+        id="source-link"
+        >this is link thing</a>
+
+        <script src="scripts.js"></script>
+    </body>
 </html>
