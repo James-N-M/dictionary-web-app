@@ -6,19 +6,66 @@
   --color-lilac-light: #e9d0fa;
 
   --font-size-lg: 3rem;
-  --font-size-med: 2rem;
+  --font-size-md: 2rem;
   --font-size-sm: 1rem;
 }
 
 h1,
 h2 {
   color: var(--color-black);
+  margin: 0px;
+}
+
+h4 {
+  color: gray;
+  font-weight: lighter;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: lightgray;
 }
 
 #word-title {
   font-size: var(--font-size-lg);
 }
 
-.section-divider {
-    display: flex;
+#word-subtitle {
+  color: var(--color-lilac);
+}
+
+#synonymns {
+  color: var(--color-purple);
+  font-weight: bold;
+  font-size: var(--font-size-sm);
+}
+
+#play-btn {
+  border-radius: 50%;
+  border: none;
+  padding: 16px 20px;
+  font-size: var(--font-size-sm);
+  color: var(--color-lilac);
+  background-color: var(--color-lilac-light);
+}
+
+ul {
+  list-style: none;
+  padding-left: 20px;
+} 
+
+ul li::before {
+  content: "\2022";
+  color: var(--color-purple);
+  font-weight: bold;
+  display: inline-block; 
+  width: 1.2em;
+  margin-left: -1em;
+  font-size: 1.3em;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
 }

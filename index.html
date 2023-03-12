@@ -1,76 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta
-            http-equiv="X-UA-Compatible"
-            content="IE=edge"
-        >
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-        >
-        <link rel="stylesheet" href="styles.css">
-        <title>Dictionary Web App</title>
-    </head>
-    <body>
-        <div>This is the top bar</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/1d796ca600.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Dictionary Web App</title>
+  </head>
+  <body>
+    <div>This is the top bar</div>
 
+    <input type="text" placeholder="keyboard" />
 
-        <input
-            type="text"
-            placeholder="keyboard"
-        >
+    <div
+      style="display: flex; align-items: center; justify-content: space-between"
+    >
+      <div>
+        <h1 id="word-title">keyboard</h1>
+        <h2 id="word-subtitle">/kc:/bc</h2>
+      </div>
+      <div>
+        <button id="play-btn">
+          <i class="fa-solid fa-play"></i>
+        </button>
+      </div>
+    </div>
 
+    <div class="align-center">
+      <h3 style="margin-right: 20px">noun</h3>
+      <div style="flex: 1">
+        <hr />
+      </div>
+    </div>
 
-        <div>
-            <div>
-                <h1 id="word-title">keyboard</h1>
-                <h2 id="word-subtitle">/kc:/bc</h2>
-            </div>
-            <button id="play-btn">Play</button>
-        </div>
+    <div>
+      <h4>Meaning</h4>
+      <ul>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+      </ul>
+    </div>
 
+    <div class="align-center">
+      <h4 style="margin-right: 20px">Synonoumns</h4>
+      <span id="synonymns">electronic keyboard</span>
+    </div>
 
-        <div class="section-divider" style="align-items: center;">
-            <h3 style="margin-right: 20px;">noun</h3>
-            <div style="flex: 1"><hr style="border-bottom: thin black 1px;"></div>
-        </div>
+    <div class="align-center">
+      <h3 style="margin-right: 20px">verb</h3>
+      <div style="flex: 1">
+        <hr />
+      </div>
+    </div>
 
+    <h4>Meaning</h4>
+    <ul>
+      <li>123</li>
+    </ul>
 
-        <h4>Meaning</h4>
-        <ul id="noun-meaning">
-            <li>123</li>
-            <li>123</li>
-            <li>123</li>
-        </ul>
+    <hr />
 
+    <h5>Source</h5>
+    <a href="#" id="source-link"> this is link thing </a>
 
-        <h4>Synonoumns</h4>
-        <span id="synonymns">electronic keyboard</span>
-
-
-        <div>
-            <h3>verb</h3>
-            <hr>
-        </div>
-
-
-        <h4>Meaning</h4>
-        <ul id="verb-meaning">
-            <li>123</li>
-        </ul>
-
-
-        <hr>
-
-
-        <h5>Source</h5>
-        <a 
-        href="#"
-        id="source-link"
-        >this is link thing</a>
-
-        <script src="scripts.js"></script>
-    </body>
+    <script src="scripts.js"></script>
+  </body>
 </html>
