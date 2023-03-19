@@ -12,17 +12,16 @@
     <title>Dictionary Web App</title>
   </head>
   <body class="content">
-    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div class="top-bar">
       <div><i class="fa-solid fa-book fa-2x"></i></div>
-      <div style="display: flex; align-items: center;">
+      <div class="top-bar__right">
         <select name="" id=""
-        style="margin-right: 10px;"
+        class="top-bar__item"
         >
           <option value="">Serif</option>
         </select>
         <label
-        style="margin-right: 10px;" 
-        class="switch">
+        class="switch top-bar__item">
           <input type="checkbox">
           <span class="slider round"></span>
         </label>
@@ -30,12 +29,10 @@
       </div>
     </div>
 
-    <div style="margin-bottom: 10px;">
-      <input style="width: 100%; height: 30px;" type="text" placeholder="keyboard" />
-    </div>
+    <input id="search" type="text" placeholder="keyboard" />
 
     <div
-      style="display: flex; align-items: center; justify-content: space-between"
+    class="word-section"
     >
       <div>
         <h1 id="word-title">keyboard</h1>
@@ -48,9 +45,9 @@
       </div>
     </div>
 
-    <div class="align-center">
-      <h3 style="margin-right: 20px">noun</h3>
-      <div style="flex: 1">
+    <div class="divider-section">
+      <h3 class="divider-section__title">noun</h3>
+      <div class="divider-section__divider">
         <hr />
       </div>
     </div>
@@ -64,14 +61,14 @@
       </ul>
     </div>
 
-    <div class="align-center">
-      <h4 style="margin-right: 20px">Synonoumns</h4>
+    <div class="synonoumns-section">
+      <h4 class="synonoumns-section__title">Synonoumns</h4>
       <span id="synonymns">electronic keyboard</span>
     </div>
 
-    <div class="align-center">
-      <h3 style="margin-right: 20px">verb</h3>
-      <div style="flex: 1">
+    <div class="divider-section">
+      <h3 class="divider-section__title">verb</h3>
+      <div class="divider-section__divider">
         <hr />
       </div>
     </div>
