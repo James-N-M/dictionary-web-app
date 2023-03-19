@@ -57,6 +57,10 @@ hr {
   cursor: pointer;
 }
 
+#play-btn:hover {
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+}
+
 ul {
   list-style: none;
   padding-left: 20px;
