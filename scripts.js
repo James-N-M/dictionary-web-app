@@ -115,8 +115,8 @@ const word = {
 
 document.getElementById('word-title').innerText = word.word;
 document.getElementById('word-subtitle').innerText = word.phonetic;
-
 const soundElement = document.getElementById('sound');
+
 soundElement.src = word.phonetics[0].audio;
 
 document.getElementById('play-btn').onclick = (event) => {
@@ -128,4 +128,13 @@ function nouns(word) {
   return word.meanings.find((meaning) => meaning.partOfSpeech === "noun");
 }
 
-nouns(word);
+const nounDefinitionsElement = document.getElementById('noun-definitions');
+
+const nounDefinitions = nouns(word).definitions.slice(0, 3);
+
+nounDefinitions.forEach(element => {
+  let definition = document.createElement("li");
+  definition.appendChild(document.createTextNode(element.definition))
+  nounDefinitionsElement.appendChild(definition);
+});
+
