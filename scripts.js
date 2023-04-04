@@ -119,8 +119,7 @@ const soundElement = document.getElementById('sound');
 
 soundElement.src = word.phonetics[0].audio;
 
-document.getElementById('play-btn').onclick = (event) => {
-  // console.log(event.currentTarget.style.cssText = "background-color: red");
+document.getElementById('play-btn').onclick = () => {
   soundElement.play();
 }
 
@@ -128,13 +127,29 @@ function nouns(word) {
   return word.meanings.find((meaning) => meaning.partOfSpeech === "noun");
 }
 
+function verbs(word) {
+  return word.meanings.find((meaning) => meaning.partOfSpeech === "verb");
+}
+
 const nounDefinitionsElement = document.getElementById('noun-definitions');
 
+const verbDefinitionElement = document.getElementById('verb-definitions');
+
 const nounDefinitions = nouns(word).definitions.slice(0, 3);
+
+const verbDefinitions = verbs(word).definitions.slice(0,3);
 
 nounDefinitions.forEach(element => {
   let definition = document.createElement("li");
   definition.appendChild(document.createTextNode(element.definition))
   nounDefinitionsElement.appendChild(definition);
 });
+
+verbDefinitions.forEach(element => {
+  let definition = document.createElement("li");
+  definition.appendChild(document.createTextNode(element.definition))
+  verbDefinitionElement.appendChild(definition);
+});
+
+document.getElementById('source-link').innerText = word.sourceUrls[0];
 
