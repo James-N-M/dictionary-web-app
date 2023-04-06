@@ -10,6 +10,10 @@
   --font-size-sm: 1rem;
 }
 
+html {
+  font-size: calc(15px + 0.390625vw);
+}
+
 h1,
 h2 {
   color: var(--color-black);
