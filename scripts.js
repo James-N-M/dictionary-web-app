@@ -123,6 +123,23 @@ document.getElementById('play-btn').onclick = () => {
   soundElement.play();
 }
 
+function changeFont() {
+  var fontFamily = document.getElementById("font-select").value;
+  let body = document.getElementsByTagName('body')[0]; 
+
+  switch(fontFamily) {
+    case "serif":
+      body.style.fontFamily = "Times New Roman, Times, serif"; 
+      break;
+    case "sans-serif":
+      body.style.fontFamily = "Arial, Helvetica, sans-serif";
+      break;
+    case "monospace":
+      body.style.fontFamily = "Lucida Console, Courier New, monospace"; 
+  }
+
+}
+
 function nouns(word) {
   return word.meanings.find((meaning) => meaning.partOfSpeech === "noun");
 }

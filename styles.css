@@ -10,8 +10,9 @@
   --font-size-sm: 1rem;
 }
 
-html {
+body {
   font-size: calc(15px + 0.390625vw);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 h1,

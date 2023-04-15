@@ -15,10 +15,13 @@
     <div class="top-bar">
       <div><i class="fa-solid fa-book fa-2x"></i></div>
       <div class="top-bar__right">
-        <select name="" id=""
+        <select name="" id="font-select"
         class="top-bar__item"
+        onchange="changeFont()"
         >
-          <option value="">Serif</option>
+          <option value="serif">Serif</option>
+          <option value="sans-serif" selected="selected">Sans Serif</option>
+          <option value="monospace">Monospace</option>
         </select>
         <label
         class="switch top-bar__item">
