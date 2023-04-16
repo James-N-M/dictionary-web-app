@@ -142,13 +142,16 @@ function changeFont() {
 
 function changeTheme() {
   let themeIcon = document.getElementById("theme-icon");
+  let body = document.getElementsByTagName('body')[0]; 
 
   if(themeIcon.classList.contains('fa-sun')) { 
     themeIcon.classList.remove('fa-sun');
     themeIcon.classList.add('fa-moon');
+    body.style.backgroundColor = "grey";
   } else if(themeIcon.classList.contains('fa-moon')) {
     themeIcon.classList.remove('fa-moon');
     themeIcon.classList.add('fa-sun');
+    body.style.backgroundColor = "";
   }
 }
 
