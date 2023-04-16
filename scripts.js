@@ -140,6 +140,18 @@ function changeFont() {
 
 }
 
+function changeTheme() {
+  let themeIcon = document.getElementById("theme-icon");
+
+  if(themeIcon.classList.contains('fa-sun')) { 
+    themeIcon.classList.remove('fa-sun');
+    themeIcon.classList.add('fa-moon');
+  } else if(themeIcon.classList.contains('fa-moon')) {
+    themeIcon.classList.remove('fa-moon');
+    themeIcon.classList.add('fa-sun');
+  }
+}
+
 function nouns(word) {
   return word.meanings.find((meaning) => meaning.partOfSpeech === "noun");
 }
