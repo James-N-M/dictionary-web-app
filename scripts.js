@@ -113,6 +113,12 @@ const word = {
   sourceUrls: ["https://en.wiktionary.org/wiki/apple"],
 };
 
+let storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+if (storedTheme) {
+  document.documentElement.setAttribute('data-theme', storedTheme)
+}
+
 document.getElementById('word-title').innerText = word.word;
 document.getElementById('word-subtitle').innerText = word.phonetic;
 const soundElement = document.getElementById('sound');
@@ -140,18 +146,27 @@ function changeFont() {
 
 }
 
-function changeTheme() {
-  let themeIcon = document.getElementById("theme-icon");
-  let body = document.getElementsByTagName('body')[0]; 
+function toggleTheme() {
+  let currentTheme = document.documentElement.getAttribute("data-theme");
 
+  var targetTheme = "light";
+
+  if (currentTheme === 'light') {
+    targetTheme = "dark";
+  }
+
+  document.documentElement.setAttribute('data-theme', targetTheme);
+
+  localStorage.setItem('theme', targetTheme);
+  
+  // toggle icon
+  let themeIcon = document.getElementById("theme-icon");
   if(themeIcon.classList.contains('fa-sun')) { 
     themeIcon.classList.remove('fa-sun');
     themeIcon.classList.add('fa-moon');
-    body.style.backgroundColor = "grey";
   } else if(themeIcon.classList.contains('fa-moon')) {
     themeIcon.classList.remove('fa-moon');
     themeIcon.classList.add('fa-sun');
-    body.style.backgroundColor = "";
   }
 }
 
