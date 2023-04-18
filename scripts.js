@@ -222,4 +222,34 @@ async function getWord() {
 
   document.getElementById("word-title").innerText = jsonData[0].word;
   document.getElementById("word-subtitle").innerText = jsonData[0].phonetic;
+  document.getElementById("sound").src = jsonData[0].phonetics[0].audio;
+  document.getElementById("source-link").innerText = jsonData[0].sourceUrls[0];
+
+  // remove nouns
+  while (nounDefinitionsElement.firstChild) {
+    nounDefinitionsElement.removeChild(nounDefinitionsElement.lastChild);
+  }
+
+  // add new noun meanings
+  nouns(jsonData[0])
+    .definitions.slice(0, 3)
+    .forEach((element) => {
+      let definition = document.createElement("li");
+      definition.appendChild(document.createTextNode(element.definition));
+      nounDefinitionsElement.appendChild(definition);
+    });
+
+  // remove verbs
+  while (verbDefinitionElement.firstChild) {
+    verbDefinitionElement.removeChild(verbDefinitionElement.lastChild);
+  }
+
+  // add new verb meanings
+  verbs(jsonData[0])
+    .definitions.slice(0, 3)
+    .forEach((element) => {
+      let definition = document.createElement("li");
+      definition.appendChild(document.createTextNode(element.definition));
+      verbDefinitionElement.appendChild(definition);
+    });
 }
