@@ -1,4 +1,4 @@
-const word = {
+let word = {
   word: "apple",
   phonetic: "/ˈæp.əl/",
   phonetics: [
@@ -113,37 +113,40 @@ const word = {
   sourceUrls: ["https://en.wiktionary.org/wiki/apple"],
 };
 
-let storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+let storedTheme =
+  localStorage.getItem("theme") ||
+  (window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light");
 
 if (storedTheme) {
-  document.documentElement.setAttribute('data-theme', storedTheme)
+  document.documentElement.setAttribute("data-theme", storedTheme);
 }
 
-document.getElementById('word-title').innerText = word.word;
-document.getElementById('word-subtitle').innerText = word.phonetic;
-const soundElement = document.getElementById('sound');
+document.getElementById("word-title").innerText = word.word;
+document.getElementById("word-subtitle").innerText = word.phonetic;
+const soundElement = document.getElementById("sound");
 
 soundElement.src = word.phonetics[0].audio;
 
-document.getElementById('play-btn').onclick = () => {
+document.getElementById("play-btn").onclick = () => {
   soundElement.play();
-}
+};
 
 function changeFont() {
   var fontFamily = document.getElementById("font-select").value;
-  let body = document.getElementsByTagName('body')[0]; 
+  let body = document.getElementsByTagName("body")[0];
 
-  switch(fontFamily) {
+  switch (fontFamily) {
     case "serif":
-      body.style.fontFamily = "Times New Roman, Times, serif"; 
+      body.style.fontFamily = "Times New Roman, Times, serif";
       break;
     case "sans-serif":
       body.style.fontFamily = "Arial, Helvetica, sans-serif";
       break;
     case "monospace":
-      body.style.fontFamily = "Lucida Console, Courier New, monospace"; 
+      body.style.fontFamily = "Lucida Console, Courier New, monospace";
   }
-
 }
 
 function toggleTheme() {
@@ -151,22 +154,22 @@ function toggleTheme() {
 
   var targetTheme = "light";
 
-  if (currentTheme === 'light') {
+  if (currentTheme === "light") {
     targetTheme = "dark";
   }
 
-  document.documentElement.setAttribute('data-theme', targetTheme);
+  document.documentElement.setAttribute("data-theme", targetTheme);
 
-  localStorage.setItem('theme', targetTheme);
-  
+  localStorage.setItem("theme", targetTheme);
+
   // toggle icon
   let themeIcon = document.getElementById("theme-icon");
-  if(themeIcon.classList.contains('fa-sun')) { 
-    themeIcon.classList.remove('fa-sun');
-    themeIcon.classList.add('fa-moon');
-  } else if(themeIcon.classList.contains('fa-moon')) {
-    themeIcon.classList.remove('fa-moon');
-    themeIcon.classList.add('fa-sun');
+  if (themeIcon.classList.contains("fa-sun")) {
+    themeIcon.classList.remove("fa-sun");
+    themeIcon.classList.add("fa-moon");
+  } else if (themeIcon.classList.contains("fa-moon")) {
+    themeIcon.classList.remove("fa-moon");
+    themeIcon.classList.add("fa-sun");
   }
 }
 
@@ -178,25 +181,45 @@ function verbs(word) {
   return word.meanings.find((meaning) => meaning.partOfSpeech === "verb");
 }
 
-const nounDefinitionsElement = document.getElementById('noun-definitions');
+const nounDefinitionsElement = document.getElementById("noun-definitions");
 
-const verbDefinitionElement = document.getElementById('verb-definitions');
+const verbDefinitionElement = document.getElementById("verb-definitions");
 
 const nounDefinitions = nouns(word).definitions.slice(0, 3);
 
-const verbDefinitions = verbs(word).definitions.slice(0,3);
+const verbDefinitions = verbs(word).definitions.slice(0, 3);
 
-nounDefinitions.forEach(element => {
+nounDefinitions.forEach((element) => {
   let definition = document.createElement("li");
-  definition.appendChild(document.createTextNode(element.definition))
+  definition.appendChild(document.createTextNode(element.definition));
   nounDefinitionsElement.appendChild(definition);
 });
 
-verbDefinitions.forEach(element => {
+verbDefinitions.forEach((element) => {
   let definition = document.createElement("li");
-  definition.appendChild(document.createTextNode(element.definition))
+  definition.appendChild(document.createTextNode(element.definition));
   verbDefinitionElement.appendChild(definition);
 });
 
-document.getElementById('source-link').innerText = word.sourceUrls[0];
+document.getElementById("source-link").innerText = word.sourceUrls[0];
 
+let searchInput = document.getElementById("search-input");
+
+searchInput.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    getWord();
+  }
+});
+
+async function getWord() {
+  const wordInput = document.getElementById("search-input").value;
+
+  const response = await fetch(
+    `https://api.dictionaryapi.dev/api/v2/entries/en/${wordInput}`
+  );
+  const jsonData = await response.json();
+
+  document.getElementById("word-title").innerText = jsonData[0].word;
+  document.getElementById("word-subtitle").innerText = jsonData[0].phonetic;
+}
