@@ -162,7 +162,10 @@ function toggleTheme() {
 
   localStorage.setItem("theme", targetTheme);
 
-  // toggle icon
+  toggleIcon();
+}
+
+function toggleIcon() {
   let themeIcon = document.getElementById("theme-icon");
   if (themeIcon.classList.contains("fa-sun")) {
     themeIcon.classList.remove("fa-sun");
@@ -180,39 +183,6 @@ function nouns(word) {
 function verbs(word) {
   return word.meanings.find((meaning) => meaning.partOfSpeech === "verb");
 }
-
-const nounDefinitionsElement = document.getElementById("noun-definitions");
-
-const verbDefinitionElement = document.getElementById("verb-definitions");
-
-const nounSynonym = nouns(word).synonyms[0];
-
-const nounDefinitions = nouns(word).definitions.slice(0, 3);
-
-const verbDefinitions = verbs(word).definitions.slice(0, 3);
-
-nounDefinitions.forEach((element) => {
-  let definition = document.createElement("li");
-  definition.appendChild(document.createTextNode(element.definition));
-  nounDefinitionsElement.appendChild(definition);
-});
-
-verbDefinitions.forEach((element) => {
-  let definition = document.createElement("li");
-  definition.appendChild(document.createTextNode(element.definition));
-  verbDefinitionElement.appendChild(definition);
-});
-
-document.getElementById("source-link").innerText = word.sourceUrls[0];
-
-let searchInput = document.getElementById("search-input");
-
-searchInput.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    getWord();
-  }
-});
 
 async function getWord() {
   const wordInput = document.getElementById("search-input").value;
@@ -259,5 +229,38 @@ async function getWord() {
 
     document.getElementById('synonymn').innerText = nounSynonym ? nounSynonym : 'no synonyms';
 }
+
+const nounDefinitionsElement = document.getElementById("noun-definitions");
+
+const verbDefinitionElement = document.getElementById("verb-definitions");
+
+const nounSynonym = nouns(word).synonyms[0];
+
+const nounDefinitions = nouns(word).definitions.slice(0, 3);
+
+const verbDefinitions = verbs(word).definitions.slice(0, 3);
+
+nounDefinitions.forEach((element) => {
+  let definition = document.createElement("li");
+  definition.appendChild(document.createTextNode(element.definition));
+  nounDefinitionsElement.appendChild(definition);
+});
+
+verbDefinitions.forEach((element) => {
+  let definition = document.createElement("li");
+  definition.appendChild(document.createTextNode(element.definition));
+  verbDefinitionElement.appendChild(definition);
+});
+
+let searchInput = document.getElementById("search-input");
+
+searchInput.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    getWord();
+  }
+});
+
+document.getElementById("source-link").innerText = word.sourceUrls[0];
 
 document.getElementById('synonymn').innerText = nounSynonym ? nounSynonym : 'no synonyms';
