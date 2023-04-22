@@ -185,6 +185,8 @@ const nounDefinitionsElement = document.getElementById("noun-definitions");
 
 const verbDefinitionElement = document.getElementById("verb-definitions");
 
+const nounSynonym = nouns(word).synonyms[0];
+
 const nounDefinitions = nouns(word).definitions.slice(0, 3);
 
 const verbDefinitions = verbs(word).definitions.slice(0, 3);
@@ -252,4 +254,10 @@ async function getWord() {
       definition.appendChild(document.createTextNode(element.definition));
       verbDefinitionElement.appendChild(definition);
     });
+
+    const nounSynonym = nouns(jsonData[0]).synonyms[0];
+
+    document.getElementById('synonymn').innerText = nounSynonym ? nounSynonym : 'no synonyms';
 }
+
+document.getElementById('synonymn').innerText = nounSynonym ? nounSynonym : 'no synonyms';
