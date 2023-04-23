@@ -1,5 +1,5 @@
 # Dictionary Web App
-URL 
+URL https://james-n-m.github.io/dictionary-web-app/
 
 This a simple web app where a user can search for a word and get the meanings, synonyms and play audio
 of the word.
