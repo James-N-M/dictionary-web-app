@@ -13,8 +13,9 @@ of the word.
 
 Users should be able to:
 
-- Search random words from Dictionary Api
+- Search for words from Dictionary Api
 - Load a light or dark theme based on users device preferences 
+- Toggle theme and save it in session storage 
 - Load layout for the site depending on users device screen size
 
 ### Built with
