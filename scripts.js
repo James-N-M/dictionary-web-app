@@ -193,7 +193,7 @@ async function getWord() {
   const jsonData = await response.json();
 
   document.getElementById("word-title").innerText = jsonData[0].word;
-  document.getElementById("word-subtitle").innerText = jsonData[0].phonetic;
+  document.getElementById("word-subtitle").innerText = jsonData[0].phonetic ? jsonData[0].phonetic : '';
   document.getElementById("sound").src = jsonData[0].phonetics[0].audio;
   document.getElementById("source-link").innerText = jsonData[0].sourceUrls[0];
 
