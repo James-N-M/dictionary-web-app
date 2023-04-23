@@ -193,7 +193,9 @@ async function getWord() {
   const jsonData = await response.json();
 
   document.getElementById("word-title").innerText = jsonData[0].word;
-  document.getElementById("word-subtitle").innerText = jsonData[0].phonetic ? jsonData[0].phonetic : '';
+  document.getElementById("word-subtitle").innerText = jsonData[0].phonetic
+    ? jsonData[0].phonetic
+    : "";
   document.getElementById("sound").src = jsonData[0].phonetics[0].audio;
   document.getElementById("source-link").innerText = jsonData[0].sourceUrls[0];
 
@@ -225,9 +227,11 @@ async function getWord() {
       verbDefinitionElement.appendChild(definition);
     });
 
-    const nounSynonym = nouns(jsonData[0]).synonyms[0];
+  const nounSynonym = nouns(jsonData[0]).synonyms[0];
 
-    document.getElementById('synonymn').innerText = nounSynonym ? nounSynonym : 'no synonyms';
+  document.getElementById("synonymn").innerText = nounSynonym
+    ? nounSynonym
+    : "no synonyms";
 }
 
 const nounDefinitionsElement = document.getElementById("noun-definitions");
@@ -263,4 +267,6 @@ searchInput.addEventListener("keypress", function (event) {
 
 document.getElementById("source-link").innerText = word.sourceUrls[0];
 
-document.getElementById('synonymn').innerText = nounSynonym ? nounSynonym : 'no synonyms';
+document.getElementById("synonymn").innerText = nounSynonym
+  ? nounSynonym
+  : "no synonyms";
