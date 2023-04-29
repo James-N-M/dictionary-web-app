@@ -121,6 +121,11 @@ let storedTheme =
 
 if (storedTheme) {
   document.documentElement.setAttribute("data-theme", storedTheme);
+
+  if(storedTheme === 'dark') {
+    document.getElementById('theme-toggle').checked = true;
+    toggleIcon();
+  }
 }
 
 document.getElementById("word-title").innerText = word.word;
