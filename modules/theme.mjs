@@ -28,14 +28,14 @@ function toggleTheme() {
 }
 
 function toggleIcon() {
-    let themeIcon = document.getElementById("theme-icon");
-    if (themeIcon.classList.contains("fa-sun")) {
-      themeIcon.classList.remove("fa-sun");
-      themeIcon.classList.add("fa-moon");
-    } else if (themeIcon.classList.contains("fa-moon")) {
-      themeIcon.classList.remove("fa-moon");
-      themeIcon.classList.add("fa-sun");
-    }
+  let themeIcon = document.getElementById("theme-icon");
+  if (themeIcon.classList.contains("fa-sun")) {
+    themeIcon.classList.remove("fa-sun");
+    themeIcon.classList.add("fa-moon");
+  } else if (themeIcon.classList.contains("fa-moon")) {
+    themeIcon.classList.remove("fa-moon");
+    themeIcon.classList.add("fa-sun");
   }
+}
 
 export { setTheme, getTheme, toggleTheme, toggleIcon };

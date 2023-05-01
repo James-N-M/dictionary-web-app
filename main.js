@@ -1,12 +1,18 @@
-import { setTheme, getTheme, toggleTheme, toggleIcon } from "./modules/theme.mjs";
+import {
+  setTheme,
+  getTheme,
+  toggleTheme,
+  toggleIcon,
+} from "./modules/theme.mjs";
+
+const themeToggle = document.getElementById("theme-toggle");
+themeToggle.onchange = toggleTheme;
 
 let theme = getTheme();
 
 setTheme(theme);
 
 if (theme === "dark") {
-  document.getElementById("theme-toggle").checked = true;
+  themeToggle.checked = true;
   toggleIcon();
 }
-
-document.getElementById('theme-toggle').onchange = toggleTheme; 

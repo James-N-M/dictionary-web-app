@@ -113,18 +113,55 @@ let word = {
   sourceUrls: ["https://en.wiktionary.org/wiki/apple"],
 };
 
-document.getElementById("word-title").innerText = word.word;
-document.getElementById("word-subtitle").innerText = word.phonetic;
+const wordTitle = document.getElementById("word-title");
+const wordSubTitle = document.getElementById("word-subtitle");
 const soundElement = document.getElementById("sound");
+const playButton = document.getElementById("play-btn");
+const sourceLink = document.getElementById("source-link");
+const searchInput = document.getElementById("search-input");
+const fontSelect = document.getElementById("font-select");
+const nounDefinitionsElement = document.getElementById("noun-definitions");
+const verbDefinitionElement = document.getElementById("verb-definitions");
+const synonym = document.getElementById("synonymn");
 
+wordTitle.innerText = word.word;
+wordSubTitle.innerText = word.phonetic;
 soundElement.src = word.phonetics[0].audio;
+sourceLink.innerText = word.sourceUrls[0];
 
-document.getElementById("play-btn").onclick = () => {
+synonym.innerText = nouns(word).synonyms[0]
+  ? nouns(word).synonyms[0]
+  : "no synonyms";
+
+playButton.onclick = () => {
   soundElement.play();
 };
 
+searchInput.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    getWord();
+  }
+});
+
+const nounDefinitions = nouns(word).definitions.slice(0, 3);
+
+const verbDefinitions = verbs(word).definitions.slice(0, 3);
+
+nounDefinitions.forEach((element) => {
+  let definition = document.createElement("li");
+  definition.appendChild(document.createTextNode(element.definition));
+  nounDefinitionsElement.appendChild(definition);
+});
+
+verbDefinitions.forEach((element) => {
+  let definition = document.createElement("li");
+  definition.appendChild(document.createTextNode(element.definition));
+  verbDefinitionElement.appendChild(definition);
+});
+
 function changeFont() {
-  var fontFamily = document.getElementById("font-select").value;
+  let fontFamily = fontSelect.value;
   let body = document.getElementsByTagName("body")[0];
 
   switch (fontFamily) {
@@ -155,12 +192,10 @@ async function getWord() {
   );
   const jsonData = await response.json();
 
-  document.getElementById("word-title").innerText = jsonData[0].word;
-  document.getElementById("word-subtitle").innerText = jsonData[0].phonetic
-    ? jsonData[0].phonetic
-    : "";
-  document.getElementById("sound").src = jsonData[0].phonetics[0].audio;
-  document.getElementById("source-link").innerText = jsonData[0].sourceUrls[0];
+  wordTitle.innerText = jsonData[0].word;
+  wordSubTitle.innerText = jsonData[0].phonetic ? jsonData[0].phonetic : "";
+  soundElement.src = jsonData[0].phonetics[0].audio;
+  sourceLink.innerText = jsonData[0].sourceUrls[0];
 
   // remove nouns
   while (nounDefinitionsElement.firstChild) {
@@ -192,44 +227,5 @@ async function getWord() {
 
   const nounSynonym = nouns(jsonData[0]).synonyms[0];
 
-  document.getElementById("synonymn").innerText = nounSynonym
-    ? nounSynonym
-    : "no synonyms";
+  synonym.innerText = nounSynonym ? nounSynonym : "no synonyms";
 }
-
-const nounDefinitionsElement = document.getElementById("noun-definitions");
-
-const verbDefinitionElement = document.getElementById("verb-definitions");
-
-const nounSynonym = nouns(word).synonyms[0];
-
-const nounDefinitions = nouns(word).definitions.slice(0, 3);
-
-const verbDefinitions = verbs(word).definitions.slice(0, 3);
-
-nounDefinitions.forEach((element) => {
-  let definition = document.createElement("li");
-  definition.appendChild(document.createTextNode(element.definition));
-  nounDefinitionsElement.appendChild(definition);
-});
-
-verbDefinitions.forEach((element) => {
-  let definition = document.createElement("li");
-  definition.appendChild(document.createTextNode(element.definition));
-  verbDefinitionElement.appendChild(definition);
-});
-
-let searchInput = document.getElementById("search-input");
-
-searchInput.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    getWord();
-  }
-});
-
-document.getElementById("source-link").innerText = word.sourceUrls[0];
-
-document.getElementById("synonymn").innerText = nounSynonym
-  ? nounSynonym
-  : "no synonyms";
