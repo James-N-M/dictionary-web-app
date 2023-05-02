@@ -119,7 +119,6 @@ const soundElement = document.getElementById("sound");
 const playButton = document.getElementById("play-btn");
 const sourceLink = document.getElementById("source-link");
 const searchInput = document.getElementById("search-input");
-const fontSelect = document.getElementById("font-select");
 const nounDefinitionsElement = document.getElementById("noun-definitions");
 const verbDefinitionElement = document.getElementById("verb-definitions");
 const synonym = document.getElementById("synonymn");
