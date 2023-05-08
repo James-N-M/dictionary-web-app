@@ -238,4 +238,3 @@ async function getWord() {
 
   synonym.innerText = nounSynonym ? nounSynonym : "no synonyms";
 }
-
